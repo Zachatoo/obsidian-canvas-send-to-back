@@ -1,12 +1,12 @@
 import { Plugin } from "obsidian";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface MyPluginSettings {}
+interface CanvasSendToBackPluginSettings {}
 
-const DEFAULT_SETTINGS: MyPluginSettings = {};
+const DEFAULT_SETTINGS: CanvasSendToBackPluginSettings = {};
 
-export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+export default class CanvasSendToBackPlugin extends Plugin {
+	settings: CanvasSendToBackPluginSettings;
 
 	async onload() {
 		await this.loadSettings();

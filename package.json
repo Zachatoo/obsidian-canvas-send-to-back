@@ -1,10 +1,9 @@
 {
-	"name": "obsidian-plugin-template",
+	"name": "obsidian-canvas-send-to-back",
 	"version": "0.0.1",
-	"description": "A description for the plugin.",
+	"description": "Send a card in Obsidian Canvas to be behind all other cards.",
 	"main": "main.js",
 	"scripts": {
-		"setup": "git submodule update --init --recursive && npm i && npx ts-node --esm external/obsidian-plugin-scripts/setup.mts",
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "npx ts-node --esm external/obsidian-plugin-scripts/version-bump.mts && git add package.json package-lock.json manifest.json versions.json"

@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-plugin-template",
-	"name": "Obsidian plugin template",
+	"id": "canvas-send-to-back",
+	"name": "Canvas Send To Back",
 	"version": "0.0.1",
-	"minAppVersion": "0.15.0",
-	"description": "A description for the plugin.",
+	"minAppVersion": "1.1.0",
+	"description": "Send a card in Obsidian Canvas to be behind all other cards.",
 	"author": "Zachatoo",
 	"authorUrl": "https://zachyoung.dev",
 	"fundingUrl": "https://github.com/sponsors/Zachatoo",
