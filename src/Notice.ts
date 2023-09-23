@@ -17,7 +17,7 @@ export class ErrorNotice extends Notice {
 		message: string | DocumentFragment,
 		timeout = DEFAULT_NOTICE_TIMEOUT_SECONDS
 	) {
-		super(`Canvas Send To Bac\n${message}`, timeout * 1000);
+		super(`Canvas Send To Back\n${message}`, timeout * 1000);
 		console.error(`canvas-send-to-back: ${message}`);
 	}
 }
