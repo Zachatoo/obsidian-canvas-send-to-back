@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-canvas-send-to-back",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Send a card in Obsidian Canvas to be behind all other cards.",
 	"main": "main.js",
 	"scripts": {
