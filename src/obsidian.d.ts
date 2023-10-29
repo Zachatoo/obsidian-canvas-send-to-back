@@ -15,3 +15,13 @@ declare module "obsidian" {
 		requestSave?: () => void;
 	}
 }
+
+declare module "obsidian/canvas" {
+	interface CanvasState {
+		viewState: {
+			x: number;
+			y: number;
+			zoom: number;
+		};
+	}
+}

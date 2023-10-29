@@ -1,5 +1,5 @@
 import { App, ItemView } from "obsidian";
-import { CanvasNodeData, CanvasData } from "obsidian/canvas";
+import { CanvasNodeData, CanvasData, CanvasState } from "obsidian/canvas";
 
 export function isCanvasNodeData(node: unknown): node is CanvasNodeData {
 	return !!node && typeof node === "object" && "id" in node;
@@ -13,6 +13,22 @@ function isCanvasData(data: unknown): data is CanvasData {
 		Array.isArray(data.nodes) &&
 		"edges" in data &&
 		Array.isArray(data.edges)
+	);
+}
+
+function isCanvasState(state: unknown): state is CanvasState {
+	return (
+		!!state &&
+		typeof state === "object" &&
+		"viewState" in state &&
+		!!state.viewState &&
+		typeof state.viewState === "object" &&
+		"x" in state.viewState &&
+		typeof state.viewState.x === "number" &&
+		"y" in state.viewState &&
+		typeof state.viewState.y === "number" &&
+		"zoom" in state.viewState &&
+		typeof state.viewState.zoom === "number"
 	);
 }
 
@@ -35,8 +51,14 @@ export function setActiveCanvasData(view: ItemView, data: unknown) {
 	if (!isCanvasData(data)) {
 		throw new Error("Data is not Canvas data.");
 	}
+	const state = view.getState();
 	view.setViewData(JSON.stringify(data), true);
 	view.requestSave();
+	if (isCanvasState(state)) {
+		view.setState(state, {});
+	} else {
+		throw new Error("Failed to reset zoom.");
+	}
 }
 
 export function getCanvasNodeDataByID(id: string, data: CanvasData) {
