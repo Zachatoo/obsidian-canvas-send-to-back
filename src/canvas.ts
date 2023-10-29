@@ -1,4 +1,4 @@
-import { App, ItemView } from "obsidian";
+import { App, ItemView, ViewStateResult } from "obsidian";
 import { CanvasNodeData, CanvasData, CanvasState } from "obsidian/canvas";
 
 export function isCanvasNodeData(node: unknown): node is CanvasNodeData {
@@ -55,7 +55,7 @@ export function setActiveCanvasData(view: ItemView, data: unknown) {
 	view.setViewData(JSON.stringify(data), true);
 	view.requestSave();
 	if (isCanvasState(state)) {
-		view.setState(state, {});
+		view.setState(state, {} as ViewStateResult);
 	} else {
 		throw new Error("Failed to reset zoom.");
 	}
