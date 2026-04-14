@@ -1,5 +1,4 @@
-import { Plugin } from "obsidian";
-import { ErrorNotice } from "./Notice";
+import { Notice, Plugin } from "obsidian";
 import {
 	getActiveCanvas,
 	getCanvasNodeDataByID,
@@ -15,7 +14,7 @@ export default class CanvasSendToBackPlugin extends Plugin {
 
 	onunload() {}
 
-	sendNodeToBack(node: unknown) {
+	async sendNodeToBack(node: unknown) {
 		try {
 			if (!isCanvasNodeData(node)) {
 				throw new Error(`Must provide a valid node.`);
@@ -25,13 +24,14 @@ export default class CanvasSendToBackPlugin extends Plugin {
 			const filteredNodes = data.nodes.filter((x) => x.id !== node.id);
 			filteredNodes.unshift(matchingNode);
 			data.nodes = filteredNodes;
-			setActiveCanvasData(view, data);
+			await setActiveCanvasData(view, data);
 		} catch (err) {
-			new ErrorNotice(`Error sending node to back.\n${err}`);
+			console.error(err);
+			new Notice(`Error sending node to back.\n${err}`);
 		}
 	}
 
-	sendNodeToFront(node: unknown) {
+	async sendNodeToFront(node: unknown) {
 		try {
 			if (!isCanvasNodeData(node)) {
 				throw new Error(`Must provide a valid node.`);
@@ -41,9 +41,10 @@ export default class CanvasSendToBackPlugin extends Plugin {
 			const filteredNodes = data.nodes.filter((x) => x.id !== node.id);
 			filteredNodes.push(matchingNode);
 			data.nodes = filteredNodes;
-			setActiveCanvasData(view, data);
+			await setActiveCanvasData(view, data);
 		} catch (err) {
-			new ErrorNotice(`Error sending node to front.\n${err}`);
+			console.error(err);
+			new Notice(`Error sending node to front.\n${err}`);
 		}
 	}
 }

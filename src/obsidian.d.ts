@@ -1,11 +1,12 @@
 import "obsidian";
+import type { EventRef, Menu } from "obsidian";
 
 declare module "obsidian" {
 	interface Workspace {
 		on(
 			name: "canvas:node-menu",
 			callback: (menu: Menu, node: unknown) => void,
-			ctx?: unknown
+			ctx?: unknown,
 		): EventRef;
 	}
 

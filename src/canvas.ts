@@ -44,7 +44,7 @@ export function getActiveCanvas(app: App) {
 	return { view, data };
 }
 
-export function setActiveCanvasData(view: ItemView, data: unknown) {
+export async function setActiveCanvasData(view: ItemView, data: unknown) {
 	if (!view || !view.getViewData || !view.setViewData || !view.requestSave) {
 		throw new Error("No active view.");
 	}
@@ -55,7 +55,7 @@ export function setActiveCanvasData(view: ItemView, data: unknown) {
 	view.setViewData(JSON.stringify(data), true);
 	view.requestSave();
 	if (isCanvasState(state)) {
-		view.setState(state, {} as ViewStateResult);
+		await view.setState(state, {} as ViewStateResult);
 	} else {
 		throw new Error("Failed to reset zoom.");
 	}

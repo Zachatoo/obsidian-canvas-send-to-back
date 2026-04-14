@@ -11,12 +11,12 @@ export function registerEvents(plugin: CanvasSendToBackPlugin) {
 				menu.addItem((item) => {
 					item.setTitle("Send to back");
 					item.setSection(menuSectionName);
-					item.onClick((e) => {
-						plugin.sendNodeToBack(node);
+					item.onClick(async (e) => {
+						await plugin.sendNodeToBack(node);
 					});
 				});
-			}
-		)
+			},
+		),
 	);
 
 	plugin.registerEvent(
@@ -26,11 +26,11 @@ export function registerEvents(plugin: CanvasSendToBackPlugin) {
 				menu.addItem((item) => {
 					item.setTitle("Send to front");
 					item.setSection(menuSectionName);
-					item.onClick((e) => {
-						plugin.sendNodeToFront(node);
+					item.onClick(async (e) => {
+						await plugin.sendNodeToFront(node);
 					});
 				});
-			}
-		)
+			},
+		),
 	);
 }
