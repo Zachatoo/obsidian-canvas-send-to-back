@@ -11,7 +11,7 @@ export function registerEvents(plugin: CanvasSendToBackPlugin) {
 				menu.addItem((item) => {
 					item.setTitle("Send to back");
 					item.setSection(menuSectionName);
-					item.onClick(async (e) => {
+					item.onClick(async () => {
 						await plugin.sendNodeToBack(node);
 					});
 				});
@@ -26,7 +26,7 @@ export function registerEvents(plugin: CanvasSendToBackPlugin) {
 				menu.addItem((item) => {
 					item.setTitle("Send to front");
 					item.setSection(menuSectionName);
-					item.onClick(async (e) => {
+					item.onClick(async () => {
 						await plugin.sendNodeToFront(node);
 					});
 				});

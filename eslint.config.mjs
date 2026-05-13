@@ -12,7 +12,12 @@ export default defineConfig([
 			globals: globals.browser,
 			parserOptions: {
 				projectService: {
-					allowDefaultProject: ["eslint.config.mjs", "manifest.json"],
+					allowDefaultProject: [
+						"eslint.config.mjs",
+						"manifest.json",
+						"package.json",
+						"tsconfig.json",
+					],
 				},
 				tsconfigRootDir: import.meta.dirname,
 				extraFileExtensions: [".json"],
@@ -20,6 +25,13 @@ export default defineConfig([
 		},
 	},
 	...obsidianmd.configs.recommended,
+	{
+		files: ["**/*.json"],
+		rules: {
+			"obsidianmd/no-plugin-as-component": "off",
+			"@typescript-eslint/no-unused-expressions": "off",
+		},
+	},
 	globalIgnores([
 		"node_modules",
 		"dist",
@@ -27,5 +39,6 @@ export default defineConfig([
 		"version-bump.mjs",
 		"versions.json",
 		"main.js",
+		"package-lock.json",
 	]),
 ]);
