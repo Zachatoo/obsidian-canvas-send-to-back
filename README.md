@@ -9,7 +9,7 @@ Send a card in Obsidian Canvas to be behind or in front of all other cards.
 ## Installation
 
 1. Open Obsidian **Settings → Community plugins → Browse**.
-2. Search for "CSS Editor" and click **Install**, then **Enable**.
+2. Search for "Canvas Send to Back" and click **Install**, then **Enable**.
 
 ---
 
